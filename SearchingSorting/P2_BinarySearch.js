@@ -1,4 +1,4 @@
-function binarySearch(arr,num){
+  function binarySearch(arr,num){
   if(arr.length === 0)
   return -1;
   
@@ -19,5 +19,5 @@ function binarySearch(arr,num){
   }
   
   
-  let res = binarySearch([1,3,4,5,6,9],5);
+  let res = binarySearch([1,3,4,5,6,9],5);  //works on sorted arrays
   console.log(res);

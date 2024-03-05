@@ -12,21 +12,16 @@
 
 function pallindrome(s){
         
-        let res =false;
+        let res = false;
         
-        if(s.length===1 || s.length===0 ) 
-        {
-            res =true;
-            return res;
-        }
-      
+        if(s.length<=1) return true;
+        
         if(s.charAt(0)===s.charAt(s.length-1)) 
             res= true;
         else 
             res=false;
         
-        if(res===false)
-            return res;
+        if(res===false)  return res;
 
         res = pallindrome(s.substring(1,s.length-1));
         return res;

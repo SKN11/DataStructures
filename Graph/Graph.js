@@ -50,7 +50,7 @@ class Graph {
         return result;
     }
 
-    breadthFirstSearch(val) {
+    breadthFirstSearch(val) {    //['A', 'B', 'C', 'D', 'E', 'F']
         if (!val) return null;
 
         const queue = [val];

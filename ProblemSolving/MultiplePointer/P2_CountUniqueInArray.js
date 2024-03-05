@@ -16,6 +16,8 @@ function countUniqueValues(arr){     //using two pointer
     //console.log(i+1);
     return (i+1);
   }
+
+  
   
   let i =   countUniqueValues([-2,-1,-1,0,1]);
   //countUniqueValues([1,1,1,1,1,2,2]);

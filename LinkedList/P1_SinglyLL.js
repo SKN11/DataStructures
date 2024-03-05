@@ -171,6 +171,26 @@ class SinglyLinkedList{
 
     }
 
+    reverse2(){  //reverse 2 and reverse both are working
+       
+        if(!this.head) return undefined;
+        this.tail=this.head;
+        let prev = this.tail;
+        
+        let current = this.head;
+        
+        while(this.head)
+        {
+          this.head = this.head.next;
+          current.next = prev;
+          prev = current;
+          current = this.head;
+         }
+         this.head =prev;
+        this.tail.next = null;
+
+    }
+
 
     traverseList(){
         let temp = this.head;
@@ -228,7 +248,7 @@ list.push(5);
 
 //list.traverseList();
 list.print();
-//list.reverse();
+//list.reverse2();
 //list.print();
 //list.traverseList();
 

@@ -22,6 +22,12 @@ function validAnagram(first, second) {  //using frequency counter
     }
   }
 
+  //not needed as in previous loop it is already checked by last for loop if loop runs completely
+  // for(let key in lookup)
+  // {
+  //     if(lookup[key] >0) return false;
+  // }
+
   return true;
 }
 

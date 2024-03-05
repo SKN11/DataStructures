@@ -1,10 +1,6 @@
-function power(base,exp){
-    
-    if(exp === 0)
-    return 1;
-
-    return base*power(base,(exp-1));
-    
+function pow(num,power){
+    if(power === 0) return 1;
+    return num*pow(num,(power-1));
 }
 
-power(2,5);
+pow(2,5);

@@ -96,7 +96,6 @@ class BST{
 
        node = this.root;
        queue.push(node);
-       let current = this.root;
        while(queue.length)
        {
            node = queue.shift()

@@ -25,3 +25,14 @@ flatten([1, 2, 3, [4, 5] ]) // [1, 2, 3, 4, 5]
 // flatten([1, [2, [3, 4], [[5]]]]) // [1, 2, 3, 4, 5]
 // flatten([[1],[2],[3]]) // [1,2,3]
 // flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]]) // [1,2,3   
+
+
+
+//another implementation
+// var res=[];
+// function flatten(arr){
+//     arr.map(e => Array.isArray(e) ? flatten(e) : res.push(e)); 
+//  }
+ 
+//  flatten([1, [2, [3, 4], [[5]]]])
+//  console.log(res)
