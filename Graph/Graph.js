@@ -10,15 +10,14 @@ class Graph {
     }
 
     addEdge(vertex1, vertex2) {
-        this.adjacencyList[vertex1] ? this.adjacencyList[vertex1].push(vertex2) : this.adjacencyList[vertex1] = [];
-
-        this.adjacencyList[vertex2] ? this.adjacencyList[vertex2].push(vertex1) : this.adjacencyList[vertex2] = [];
+        this.adjacencyList[vertex1].push(vertex2);
+        this.adjacencyList[vertex2].push(vertex1);
     }
 
     removeEdge(vertex1, vertex2) {
         this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(ele => ele !== vertex2);
 
-        this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(ele => ele !== vertex1);
+        this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(ele => ele !== vertex1);   
     }
 
     removeVertex(vertex) {
@@ -27,7 +26,7 @@ class Graph {
             this.removeEdge(ele, vertex);
         });
 
-        delete this.adjacencyList[vertex];
+        delete this.adjacencyList[vertex];  // javascript delete() :  remove key from map/object
 
     }
 
@@ -47,6 +46,29 @@ class Graph {
 
         }
         dfsRecursive(val);
+        return result;
+    }
+
+    depthFirstIterative(vertex){
+        let result = [];
+        let visited={};
+        let stack = [vertex];
+        let currentVertex;
+
+        visited[vertex] = true;
+        while(stack.length){
+            currentVertex = stack.pop();
+            result.push(currentVertex);
+          
+                
+                this.adjacencyList[currentVertex].map((neighbor) => {
+                      if(!visited[neighbor]){
+                          visited[neighbor] = true;
+                          stack.push(neighbor);
+                      }
+                });
+    
+            }
         return result;
     }
 
@@ -101,7 +123,7 @@ g.addEdge("C", "E")
 g.addEdge("D", "E")
 g.addEdge("D", "F")
 g.addEdge("E", "F")
-//g.depthFirstRecursive("A");
+//g.depthFirstRecursive("A");    //['A', 'B', 'D', 'E', 'C', 'F']
 
 //          A
 //        /   \
@@ -113,5 +135,14 @@ g.addEdge("E", "F")
 
 
 console.log(g);
+
+// {
+//     'A': ['B','C'],
+//     'B': ['A','D'],
+//     'C': ['A','E'],
+//     'D': ['B','E','F'],
+//     'E': ['C','D','F'],
+//     'F': ['D','E'],
+// }
 
 

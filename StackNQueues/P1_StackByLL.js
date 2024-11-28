@@ -5,7 +5,7 @@ class Node{
     }
 }
 
-
+//Stack with Linked Impl is O(1)
 class Stack {
     constructor(){
     this.first=null;

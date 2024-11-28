@@ -92,6 +92,7 @@ class DoublyLinkedList{
     get(index){
         if(index<0 || index>=this.length)
         return undefined;
+
         let start;
         if(index < (this.length/2))
         {
@@ -201,6 +202,26 @@ class DoublyLinkedList{
         return arr;
     }
 
+    reverse(){
+        let currentNode=this.head;
+        let nextNode=null;
+        let prevNode =null;
+        
+        this.head=this.tail;
+        this.tail=currentNode;
+    
+        while(currentNode.next){
+          nextNode = currentNode.next;
+          currentNode.next = prevNode;
+          currentNode.prev = nextNode;
+    
+          prevNode = currentNode;
+          currentNode = nextNode;
+        }
+        currentNode.next = prevNode;
+        currentNode.prev = null;
+      }
+
 
 }
 
@@ -213,3 +234,5 @@ list.push("third");
 list.push("fourth");
 
 list.print();
+// list.reverse();
+// list.print();

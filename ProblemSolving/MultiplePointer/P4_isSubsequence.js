@@ -1,29 +1,22 @@
 function isSubsequence(a,b) {
-    // good luck. Add any arguments you deem necessary.
-    let res=false;
-     if(a.length===0)
-      return res;
-      let j=0;
-      for(let i=0;i<a.length;)
-      {
-          if(a.charAt(i) == b.charAt(j))
-          {
-              res=true;
-              i++;
-              j++;
-          }
-          else{
-              res=false;
-              if(j<b.length-1)
-              j++
-              else
-              break;
-          }
-  
-          
+
+    if(a.length>b.length) return false;
+
+    let i=0;
+    for(let j=0;i<a.length,j<b.length;){
+
+      if(a.charAt(i) === b.charAt(j)) {
+        i++;j++
       }
-  
-  return res;
+      else if(a.charAt(i) !== b.charAt(j)) {
+        j++;
+      }
+
+    }
+
+  if(i<a.length) return false;
+  else return true;
+
   }
   
   

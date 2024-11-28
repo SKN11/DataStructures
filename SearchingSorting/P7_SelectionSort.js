@@ -1,34 +1,15 @@
-function selectionSort(arr){
+function selectionSort(nums) {
 
-    console.log(arr);
-
-    const swap = (arr,a,b) => {     //using es15 syntax
-        [arr[a],arr[b]] =[arr[b],arr[a]];
-    }
-
-
-    for(let i=0;i<arr.length;i++)
-    {
-        let min = i;
-        for(let j=i+1;j<arr.length;j++)
-        {
-            if(arr[j] < arr[min])
-            {
-                min = j;
-            //swap2(arr,j,j+1);
-            }
+    for (let i = 0; i < nums.length; i++) {
+        let minIndex = i;
+        for (let j = i + 1; j < nums.length; j++) {
+            if (nums[minIndex] > nums[j])
+                minIndex = j;
         }
-
-        swap(arr,i,min);
-       // console.log(arr);
-        //console.log("--");    
+        [nums[i], nums[minIndex]] = [nums[minIndex], nums[i]];
     }
-
-    
-
-    console.log(arr);
-
 }
 
-selectionSort([5,4,6,10,1,2,9]);
+
+selectionSort([5, 4, 6, 10, 1, 2, 9]);
 //console.log(res);

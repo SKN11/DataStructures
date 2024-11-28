@@ -1,3 +1,7 @@
+
+
+//Stack with Array Impl i O(1)
+
 class Stack{
     constructor(){
         this.arr=[];

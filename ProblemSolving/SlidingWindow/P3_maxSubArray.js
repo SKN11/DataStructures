@@ -1,16 +1,22 @@
-function maxSubarraySum(arr,num){    //It is using sliding window pattern
-    // add whatever parameters you deem necessary - good luck!
-    if(arr.length === 0 || arr.length <num) return null;
+//Write a function called maxSubarraySum which accepts an array of integers and a number
+// called n. The function should calculate the maximum sum of n consecutive elements in the array.
+
+
+
+ //It is using sliding window pattern
+function maxSubarraySum(arr,num){
+    if(arr.length <num) return null;  //arr.length === 0 || not needed as arr.length taking care in javascript
     
       let maxSum=0;
       let tempSum=0;
-    for(let i=0;i<num;i++)
-    maxSum+=arr[i];
+    for(let i=0;i<num;i++) {
+        maxSum+=arr[i];
+     }
   
-  tempSum=maxSum;
+    tempSum=maxSum;
     for(let i=num;i<arr.length;i++)
     {
-      tempSum = tempSum - arr[i-num] + arr[i];
+      tempSum = tempSum + arr[i] - arr[i-num] ;  // use console.log(i+"-"+num+":"+(i-num)); for better visualisation
       maxSum = Math.max(maxSum,tempSum);
   
     }
@@ -33,8 +39,6 @@ function maxSubarraySum(arr,num){    //It is using sliding window pattern
 
   
 
-//Write a function called maxSubarraySum which accepts an array of integers and a number
-// called n. The function should calculate the maximum sum of n consecutive elements in the array.
 
 maxSubarraySum([100,200,300,400],2);
 //maxSubarraySum([2,3],3);

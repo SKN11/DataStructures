@@ -3,7 +3,7 @@
 
 function sumZero(arr){
 
-    if(!arr || arr.length==0) return undefined;
+    if(!arr || arr.length==0) return undefined; //edge condition
 
     let left=0;right=arr.length-1;
     while(left<right){

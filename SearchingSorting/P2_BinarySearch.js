@@ -10,7 +10,7 @@
   {
       if(arr[mid] === num)     return mid;
       else if(arr[mid]<num)    beg=mid+1;
-     else if(arr[mid]>num)    end=mid-1;
+      else if(arr[mid]>num)    end=mid-1;
       
       mid = Math.floor((beg+end)/2);
       

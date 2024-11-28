@@ -21,6 +21,7 @@ class SinglyLinkedList {
       this.tail.next = newNode;
       this.tail = newNode;
     }
+
     this.length++;
     return this;
   }
@@ -40,7 +41,7 @@ class SinglyLinkedList {
     this.tail = newTail;
     this.tail.next = null;
     this.length--;
-    if (this.length == 0) {
+    if (this.length == 0) {  //this is important for just 1 node case
       this.head = null;
       this.tail = null;
     }
@@ -53,7 +54,7 @@ class SinglyLinkedList {
     let temp = this.head;
     this.head = this.head.next;
     this.length--;
-    if (this.length === 0) {
+    if (this.length === 0) {  //list might have just 1 node
       this.tail = null;
     }
     return temp;
@@ -64,11 +65,11 @@ class SinglyLinkedList {
     if (!this.head) {
       this.head = newNode;
       this.tail = this.head;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
     }
-    newNode.next = this.head;
-    this.head = newNode;
     this.length++;
-
     return newNode;
   }
 
@@ -104,7 +105,7 @@ class SinglyLinkedList {
       return true;
     }
 
-    var found = this.get(index - 1);
+    var found = this.get(index - 1);//search 1 index less to the desired index push
     let newNode = new Node(value);
     if (found) {
       newNode.next = found.next;
@@ -173,17 +174,65 @@ class SinglyLinkedList {
   }
 
   rotate(num) {
-    let temp = this.head;
-    this.tail.next = temp;
-    //this.tail = temp;
+    if (!this.head || this.head.next == null) return this;
 
-    for (let i = 0; i < num - 1; i++) {
+    for (let i = 0; i < num; i++) {
+      let temp = this.head;
+      this.head = this.head.next;
+      this.tail.next = temp;
+      this.tail = temp;
+
+      temp.next = null;
+    }
+  }
+
+  isPalindrome(head) {
+    let slow = this.head;
+    let fast = this.head;
+
+    while (fast && (fast.next && fast.next.next)) {
+      fast = fast.next;
+      fast = fast.next;
+      slow = slow.next;
+    }
+
+    let newLL = slow.next; //slow is in the middle whther it is odd or even
+    let reverseNewLL = this.customReverse(newLL);
+    let temp = this.head;
+
+    while (reverseNewLL) {
+      if (reverseNewLL.data != temp.data) return false
+      reverseNewLL = reverseNewLL.next;
       temp = temp.next;
     }
 
-    this.head = temp.next;
-    this.tail = temp;
-    temp.next = null;
+    return true;
+
+    //list.push(1);
+    //list.push(2);
+    //list.push(1);
+    //list.push(0);
+    //list.push(1);
+    //list.push(2);
+    //list.push(1);
+    //list.push(1);
+
+
+  }
+  customReverse(hd) {
+    if (!hd) return undefined;
+
+    var node = hd;
+    var nextNode = null;
+    var prevNode = null;
+    while (node.next != null) {
+      nextNode = node.next; //placing node to next as it is present
+      node.next = prevNode; //point current node to prev Node
+      prevNode = node; //placing prev node to 1 forward
+      node = nextNode; //placing node to its next
+    }
+    node.next = prevNode; //placing last node to prevNode
+    return node;
   }
 }
 

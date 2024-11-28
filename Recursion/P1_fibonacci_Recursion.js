@@ -5,13 +5,12 @@ function fib(n){        //o(2^n)   very bad
     return fib(n-1)+fib(n-2);
     
   }
-  
-  //fib(35);
-  
+  //fib(100); hangs ur computer
   
   
-  //Using Dynamic Programming    //O(n)
-  function fibonacci(n,memo=[])
+  
+  //Using Dynamic Programming- Bottom Up Approach    
+  function fibonacci(n,memo=[])   //Time-O(n) Space- May get space error for large number ex: fibonacci(1000) results in stack overflow error
   {
     if(memo[n]!==undefined) return memo[n];
   
@@ -28,13 +27,10 @@ function fib(n){        //o(2^n)   very bad
   
   
   
-  //without Base Case
-  function fibonacciWBC(n,memo=[undefined,1,1])
+  function fibonacciWBC(n,memo=[undefined,1,1]) //if(n<=2) return 1;  //without Base Case - by putting base case values in memo array
   {
     if(memo[n]!==undefined) return memo[n];
-  
-    //if(n<=2) return 1;
-  
+
     let res = fibonacci(n-1,memo)+fibonacci(n-2,memo);
     memo[n]=res;
   
@@ -43,7 +39,16 @@ function fib(n){        //o(2^n)   very bad
   
   
   
-  
+  //Using Dynamic Programming- Top-Bottom/Tabulation Approach
+  function fibonacciByTabulation(n){        //Time-O(n) Space-Will not get space error for large number ex: fibonacci(1000)
+
+    if(n<=2)return 1;
+    var fibNums =[0,1,1];
+    for(let i=3;i<=n;i++){
+      fibNums[i] = fibNums[i-1] + fibNums[i-2];
+    }
+    return fibNums[n]; 
+  }
   
   
   

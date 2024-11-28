@@ -1,11 +1,11 @@
 function reverse(str){
   
-    if(str.length===1)
-      return str;
-  
-      return str.charAt(str.length-1)+reverse(str.slice(0,str.length-1));
+     if(str.length===0) return ""; //base case
+
+     return  reverse(str.slice(1)) + str[0];
   }
   
-  
-  //reverse('reemas si doog yob');
+// reverse('awesome') // 'emosewa'
+// reverse('rithmschool') // 'loohcsmhtir'
+ //reverse('reemas si doog yob');
   

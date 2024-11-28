@@ -24,7 +24,8 @@ return false;
 
 
 
-averagePair([1,3,3,5,5,7,10,12,19],8);
+averagePair([1,3,3,5,6,7,10,12,19],8);  //true
+//averagePair([1,3,3,5,5,7,10,12,19],8); //false
 
 
 //colt steele
